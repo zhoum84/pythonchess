@@ -212,7 +212,7 @@ class GameState():
                     self.pins.remove(self.pins[i])
                 break
 
-        for d in directions:
+        for d in directions: 
             for i in range(1, 8):
                 end_row = r + d[0] * i
                 end_col = c + d[1] * i
