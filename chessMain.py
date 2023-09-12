@@ -43,14 +43,16 @@ def main():
                    sqSelected = (row, col)
                    playerClicks.append(sqSelected)
                 if len(playerClicks) == 2:
-                    move = chessEngine.Move(playerClicks[0], playerClicks[1], gs.board )
+                    move = chessEngine.Move(playerClicks[0], playerClicks[1], gs.board)
+
                     print(move.get_chess_notation())
-                    if move in valid_moves:
-                        gs.make_move(move)
-                        move_made = True
-                        sqSelected = () #reset user click
-                        playerClicks = []
-                    else:
+                    for i in range(len(valid_moves)):
+                        if valid_moves[i] == move:
+                            gs.make_move(valid_moves[i])
+                            move_made = True
+                            sqSelected = () #reset user click
+                            playerClicks = []
+                    if not move_made:
                         playerClicks = [sqSelected]
             elif e.type == p.KEYDOWN:
                 if e.key == p.K_z:
